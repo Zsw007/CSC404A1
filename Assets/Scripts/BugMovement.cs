@@ -20,4 +20,16 @@ public class BugMovement : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
+
+	private void OnTriggerEnter(Collider collision)
+	{
+		// You probably want a check here to make sure you're hitting a zombie
+		// Note that this is not the best method for doing so.
+		if ( collision.gameObject.tag == "Raindrop" )
+		{
+			Destroy(collision.gameObject);
+			Destroy (this.gameObject);
+		}
+	}
+		
 }
