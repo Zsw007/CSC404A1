@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
 	IEnumerator SpawnWaves(){
 		yield return new WaitForSeconds (startWait);
 		while (true) {
+			maxBugs += 1;
 			for (int i = 0; i < maxBugs; i++) {
 					
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnPoint.x, spawnPoint.x), spawnPoint.y, spawnPoint.z);
