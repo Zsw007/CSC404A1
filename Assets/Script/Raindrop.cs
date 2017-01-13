@@ -29,8 +29,8 @@ public class Raindrop : MonoBehaviour
                 dir.magnitude + other.transform.localScale.x < transform.localScale.x && 
                 Controller.Instance.AttachedRaindrop != other.gameObject)
             {
-                _cloth.localScale += other.transform.localScale;
                 transform.localScale += other.transform.localScale;
+                _cloth.localScale = transform.localScale;
                 _rigidbody.mass += other.attachedRigidbody.mass;
                 Destroy(other.gameObject);
                 _rigidbody.velocity = Vector3.zero;
