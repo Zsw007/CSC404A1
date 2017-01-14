@@ -16,6 +16,15 @@ public class Raindrop : MonoBehaviour
 	    _rigidbody = GetComponent<Rigidbody>();
 	    _cloth = GetComponentInChildren<Transform>();
 	}
+
+    void Update()
+    {
+        if (transform.position.y < -20f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 	void FixedUpdate ()
 	{
 		_rigidbody.AddForce(new Vector3(0, Mathf.Min(GetAdhesionForce() + _rigidbody.mass * Physics.gravity.y, 0), 0));

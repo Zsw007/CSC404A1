@@ -15,7 +15,8 @@ public class BugMovement : MonoBehaviour {
 		transform.Translate (new Vector3 (0, 10, 0) * Time.deltaTime * moveSpeed);
 		transform.Rotate (new Vector3 (0, 0, 0.1f) * Mathf.Sin (10*Time.deltaTime));
 		if (transform.position.y > ceiling) {
-			Destroy (this.gameObject);
+			Destroy (gameObject);
+		    Lives.Instance.Value -= 1;
 		}
 	}
 
