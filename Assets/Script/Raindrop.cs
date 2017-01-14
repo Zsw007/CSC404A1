@@ -2,7 +2,7 @@
 
 public class Raindrop : MonoBehaviour
 {
-    public const float AdhesionK = 1f;
+    public const float AdhesionK = 20f;
     public const float CohesionK = 1f;
     public const float MergeThreshold = 0.1f;
 
