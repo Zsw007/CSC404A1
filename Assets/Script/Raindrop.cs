@@ -7,10 +7,12 @@ public class Raindrop : MonoBehaviour
     public const float MergeThreshold = 0.1f;
 
     private Rigidbody _rigidbody;
+    private Transform _cloth;
 
 	void Start ()
 	{
 	    _rigidbody = GetComponent<Rigidbody>();
+	    _cloth = GetComponentInChildren<Transform>();
 	}
 	void FixedUpdate ()
 	{
@@ -25,6 +27,7 @@ public class Raindrop : MonoBehaviour
             if (Controller.Instance.AttachedRaindrop == gameObject || 
                 dir.magnitude < MergeThreshold && transform.localScale.x >= other.transform.localScale.x && Controller.Instance.AttachedRaindrop != other.gameObject)
             {
+                _cloth.localScale += other.transform.localScale;
                 transform.localScale += other.transform.localScale;
                 _rigidbody.mass += other.attachedRigidbody.mass;
                 Destroy(other.gameObject);
