@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BugMovement : MonoBehaviour {
 
@@ -20,4 +18,17 @@ public class BugMovement : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		// You probably want a check here to make sure you're hitting a zombie
+		// Note that this is not the best method for doing so.
+		if ( other.CompareTag("Raindrop") && other.transform.localScale.x > 1f)
+		{
+			Destroy(other.gameObject);
+			Destroy (this.gameObject);
+		    Score.Instance.Value += 1;
+		}
+	}
+		
 }
