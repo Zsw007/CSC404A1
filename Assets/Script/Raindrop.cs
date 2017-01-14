@@ -6,6 +6,8 @@ public class Raindrop : MonoBehaviour
     public const float CohesionK = 1f;
     public const float MergeThreshold = 0.1f;
 
+    private const float ScaleScaler = 4;
+
     private Rigidbody _rigidbody;
     private Transform _cloth;
 
@@ -29,8 +31,8 @@ public class Raindrop : MonoBehaviour
                 dir.magnitude + other.transform.localScale.x < transform.localScale.x && 
                 Controller.Instance.AttachedRaindrop != other.gameObject)
             {
-                transform.localScale += other.transform.localScale;
-                _cloth.localScale = transform.localScale;
+                transform.localScale += other.transform.localScale / transform.localScale.x / ScaleScaler;
+                _cloth.localScale = transform.localScale / _cloth.localScale.x / ScaleScaler;
                 _rigidbody.mass += other.attachedRigidbody.mass;
                 Destroy(other.gameObject);
                 _rigidbody.velocity = Vector3.zero;

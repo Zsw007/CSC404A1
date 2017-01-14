@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RaindropSpawner : MonoBehaviour
 {
     public float SpawnRate;
+    public float Speed;
 
     public GameObject Raindrop;
     public GameObject Target;
@@ -35,7 +33,7 @@ public class RaindropSpawner : MonoBehaviour
             GameObject droplet = Instantiate(Raindrop, position, _transform.rotation);
 
 	        Vector3 direction = Target.transform.position - _transform.position;
-            direction = direction.normalized * 10;
+            direction = direction.normalized * Speed;
             
 	        Rigidbody body = droplet.GetComponent<Rigidbody>();        
             body.velocity = direction;
