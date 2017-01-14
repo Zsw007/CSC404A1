@@ -26,11 +26,11 @@ public class Raindrop : MonoBehaviour
             var dir = transform.position - other.transform.position;
             if (Controller.Instance.AttachedRaindrop == gameObject || 
                 transform.localScale.x >= other.transform.localScale.x && 
-                dir.magnitude + other.transform.localScale.x < transform.localScale.x && 
+                0.8 * (dir.magnitude + other.transform.localScale.x) <= transform.localScale.x && 
                 Controller.Instance.AttachedRaindrop != other.gameObject)
             {
                 transform.localScale += other.transform.localScale;
-                _cloth.localScale = transform.localScale;
+                _cloth.localScale = new Vector3(transform.localScale.x, _cloth.localScale.y, transform.localScale.z);
                 _rigidbody.mass += other.attachedRigidbody.mass;
                 Destroy(other.gameObject);
                 _rigidbody.velocity = Vector3.zero;
