@@ -23,7 +23,9 @@ public class Raindrop : MonoBehaviour
         {
             var dir = transform.position - other.transform.position;
             if (Controller.Instance.AttachedRaindrop == gameObject || 
-                dir.magnitude < MergeThreshold && transform.localScale.x >= other.transform.localScale.x && Controller.Instance.AttachedRaindrop != other.gameObject)
+                transform.localScale.x >= other.transform.localScale.x && 
+                dir.magnitude + other.transform.localScale.x < transform.localScale.x && 
+                Controller.Instance.AttachedRaindrop != other.gameObject)
             {
                 transform.localScale += other.transform.localScale;
                 _rigidbody.mass += other.attachedRigidbody.mass;
